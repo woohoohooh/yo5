@@ -4,7 +4,7 @@ token = "410012025117208.08C28F3D0A7311BD7665C722818F43EF0DF7BB7C3A552D7994A31B9
 
 client = Client(token)
 
-details = client.operation_details(operation_id="749642525096557080")
+details = client.operation_details(operation_id="749546408458358088")
 
 properties = [i for i in details.__dict__.keys() if i[:1] != '_']
 

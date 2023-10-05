@@ -38,11 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'hello.apps.HelloConfig',
-    'django_crontab',
-]
-
-CRONJOBS = [
-    ('*/5 * * * *', 'myapp.cron.my_scheduled_job')
 ]
 
 MIDDLEWARE = [
