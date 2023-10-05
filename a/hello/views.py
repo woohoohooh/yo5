@@ -4,6 +4,12 @@ from .models import Customers
 def index(requests):
     r = requests.GET
     r = str(r)
+    print(r)
+    if requests.method == 'GET':
+        qq = Customers()
+        qq.location = requests.GET.get('location')
+        qq.plan = requests.GET.get('plan')
+        qq.save()
     if 'finland' in r:
         if '1day' in r:
             return redirect('https://yoomoney.ru/quickpay/confirm.xml?receiver=410012025117208&quickpay-form=shop&targets=Оплата VPN в Финляндии на 1 день&paymentType=SB&sum=50')
@@ -49,8 +55,4 @@ def index(requests):
             return redirect('https://yoomoney.ru/quickpay/confirm.xml?receiver=410012025117208&quickpay-form=shop&targets=%D0%9E%D0%BF%D0%BB%D0%B0%D1%82%D0%B0%20VPN%20%D0%B2%20%D0%A1%D0%A8%D0%90%20%D0%BD%D0%B0%201%20%D0%B3%D0%BE%D0%B4&paymentType=SB&sum=1750')
         if '2year' in r:
             return redirect('https://yoomoney.ru/quickpay/confirm.xml?receiver=410012025117208&quickpay-form=shop&targets=%D0%9E%D0%BF%D0%BB%D0%B0%D1%82%D0%B0%20VPN%20%D0%B2%20%D0%A1%D0%A8%D0%90%20%D0%BD%D0%B0%202%20%D0%B3%D0%BE%D0%B4%D0%B0&paymentType=SB&sum=3000')
-    if requests.method == "GET":
-        qq = Customers.objects.all()
-        qq.location = requests.GET.get("location")
-        qq.plan = requests.GET.get("plan")
     return render(requests, 'hello/index.html')
