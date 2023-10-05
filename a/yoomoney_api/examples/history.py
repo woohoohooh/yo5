@@ -22,8 +22,9 @@ def check():
         print("\tAmount     -->", operation.amount)
         print("\tLabel      -->", operation.label)
         print("\tType       -->", operation.type)
-        q = Customers.objects.all()
         if operation.status == 'success':
+
+            q = Customers.objects.all()
             q.success = True
             q.save()
             with open('success.txt', 'a', encoding='1258') as f:
