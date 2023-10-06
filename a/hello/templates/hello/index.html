@@ -2,12 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>UniqVPN - Оплата VPN в {{ a_location }} на {{ a_plan }}</title>
 </head>
-<body>
-<form action="/check_payment/" method="post">
+<body><center><br><br><br><br><br><br><br>
+<big><b>Оплата VPN в {{ a_location }}</b></big>
+<br><br><br><br><b>ШАГ 1: оплата через Юманей</b><br><br>
+<form action="/" method="post">
     {% csrf_token %}
-    <input type="submit" value="Я оплатил, получить ключ">
+    <input type="submit" value="Купить за {{ a_sum }} на {{ a_plan }}">
+</form><br><br><br><br><b>ШАГ 2: генерация ключа</b><br><br>
+<form action="get_key/" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Запрос ключа после оплаты">
 </form>
+
+    <br><b><br><b>{{ redd }}</center>
 </body>
 </html>

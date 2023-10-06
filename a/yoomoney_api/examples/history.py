@@ -13,25 +13,22 @@ client = Client(token)
 
 history = client.operation_history()
 
-print("List of operations:")
-print("Next page starts with: ", history.next_record)
-
 def check():
     global ad
     global st
     global dt
     global ch
     for operation in history.operations:
-        print()
-        print("Operation:",operation.operation_id)
-        print("\tStatus     -->", operation.status)
-        print("\tDatetime   -->", operation.datetime)
-        print("\tTitle      -->", operation.title)
-        print("\tPattern id -->", operation.pattern_id)
-        print("\tDirection  -->", operation.direction)
-        print("\tAmount     -->", operation.amount)
-        print("\tLabel      -->", operation.label)
-        print("\tType       -->", operation.type)
+        # print()
+        # print("Operation:",operation.operation_id)
+        # print("\tStatus     -->", operation.status)
+        # print("\tDatetime   -->", operation.datetime)
+        # print("\tTitle      -->", operation.title)
+        # print("\tPattern id -->", operation.pattern_id)
+        # print("\tDirection  -->", operation.direction)
+        # print("\tAmount     -->", operation.amount)
+        # print("\tLabel      -->", operation.label)
+        # print("\tType       -->", operation.type)
         ad = operation.operation_id
         st = operation.status
         dt = operation.datetime
@@ -43,5 +40,6 @@ def check():
         if a3 != ad:
             ch = True
             add = Success(otion=operation.operation_id)
+            print('new id:', operation.operation_id)
             add.save()
 

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UniqVPN - Оплата VPN в {{ a_location }} на {{ a_plan }}</title>
+    <style>
+        /* Стили для центрирования уведомления вверху экрана */
+        #notification {
+            display: none;
+            background-color: #e0e0e0;
+            padding: 10px;
+            position: fixed;
+            top: 20px; /* Расположение уведомления вверху экрана */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+</head>
+<body>
+    <center><br><br><br><br><br><br><br><br><br><br>
+    <big><b>Ключ для VPN</b></big>
+    <br><br><br><br><code><big>{{ keyy }}</big></code> <button id="copy-button">Копировать</button> <br><br><br>
+    <form action="instruction/" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Инструкция">
+    </form>
+
+    <!-- HTML-элемент для отображения уведомления -->
+    <div id="notification">
+        Ключ VPN скопирован
+    </div>
+
+    <script>
+        // Получаем значение переменной keyy из Django-шаблона и сохраняем его в JavaScript-переменной
+        var keyValue = "{{ keyy }}";
+
+        // Инициализируем Clipboard.js для кнопки
+        var copyButton = document.getElementById('copy-button');
+        new ClipboardJS(copyButton, {
+            text: function() {
+                return keyValue;
+            }
+        });
+
+        // Оповещение пользователя
+        copyButton.addEventListener('click', function() {
+            // Показываем уведомление
+            var notification = document.getElementById('notification');
+            notification.style.display = 'block';
+
+            // Автоматически скрываем уведомление через 3 секунды
+            setTimeout(function() {
+                notification.style.display = 'none';
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
